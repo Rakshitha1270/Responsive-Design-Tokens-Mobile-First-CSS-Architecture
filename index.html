@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Responsive dashboard demonstrating design tokens and mobile-first CSS architecture.">
+  <title>NovaBoard | Responsive Dashboard</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#" aria-label="NovaBoard home"><span class="brand-mark">N</span><span>NovaBoard</span></a>
+      <nav class="nav-links">
+        <a class="nav-link active" href="#overview"><span>▦</span> Overview</a>
+        <a class="nav-link" href="#analytics"><span>▥</span> Analytics</a>
+        <a class="nav-link" href="#projects"><span>▣</span> Projects</a>
+        <a class="nav-link" href="#activity"><span>◷</span> Activity</a>
+      </nav>
+      <div class="sidebar-bottom glass-panel">
+        <div class="avatar">RK</div>
+        <div><strong>Rakshitha</strong><small>Student account</small></div>
+        <span class="online-dot" aria-label="Online"></span>
+      </div>
+    </aside>
+
+    <main class="main-content" id="overview">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">MONDAY, OCTOBER 26, 2026</p>
+          <h1>Dashboard overview</h1>
+          <p class="muted">Here’s what’s happening with your workspace.</p>
+        </div>
+        <div class="top-actions">
+          <label class="search-box"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Search projects..." aria-label="Search projects"></label>
+          <button id="themeToggle" class="icon-button" type="button" aria-label="Switch to dark theme" title="Toggle theme">☾</button>
+          <button class="primary-button" id="newProjectBtn" type="button">＋ <span>New project</span></button>
+        </div>
+      </header>
+
+      <section class="stats-grid" aria-label="Workspace statistics">
+        <article class="stat-card glass-panel"><div class="stat-heading"><span>Total projects</span><span class="stat-icon purple">▣</span></div><strong class="stat-value">24</strong><p class="trend positive">↗ 12.8% <span>vs last month</span></p><div class="mini-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+        <article class="stat-card glass-panel"><div class="stat-heading"><span>Tasks completed</span><span class="stat-icon green">✓</span></div><strong class="stat-value">186</strong><p class="trend positive">↗ 8.2% <span>vs last month</span></p><div class="progress-track"><span style="width:74%"></span></div><small class="muted">74% of monthly goal</small></article>
+        <article class="stat-card glass-panel"><div class="stat-heading"><span>Team members</span><span class="stat-icon orange">♙</span></div><strong class="stat-value">12</strong><p class="trend positive">↗ 2 new <span>this month</span></p><div class="avatar-stack" aria-label="Team member avatars"><span>RK</span><span>AM</span><span>JS</span><span>+9</span></div></article>
+        <article class="stat-card glass-panel"><div class="stat-heading"><span>Time saved</span><span class="stat-icon blue">◷</span></div><strong class="stat-value">32.5<span class="unit">h</span></strong><p class="trend positive">↗ 16.4% <span>vs last month</span></p><div class="sparkline" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+      </section>
+
+      <section class="content-grid" id="analytics">
+        <article class="panel glass-panel">
+          <div class="panel-header"><div><h2>Project activity</h2><p class="muted">Tasks completed over the week</p></div><select id="chartRange" aria-label="Chart range"><option value="week">This week</option><option value="month">This month</option></select></div>
+          <div class="chart" role="img" aria-label="Bar chart of completed tasks by day">
+            <div class="chart-y"><span>40</span><span>30</span><span>20</span><span>10</span><span>0</span></div>
+            <div class="chart-bars" id="chartBars"><div class="bar-column"><i style="height:42%"></i><span>Mon</span></div><div class="bar-column"><i style="height:64%"></i><span>Tue</span></div><div class="bar-column"><i style="height:50%"></i><span>Wed</span></div><div class="bar-column"><i style="height:82%"></i><span>Thu</span></div><div class="bar-column"><i style="height:70%"></i><span>Fri</span></div><div class="bar-column"><i style="height:94%"></i><span>Sat</span></div><div class="bar-column"><i style="height:58%"></i><span>Sun</span></div></div>
+          </div>
+        </article>
+
+        <article class="panel glass-panel" id="activity">
+          <div class="panel-header"><div><h2>Recent activity</h2><p class="muted">Latest updates from your team</p></div><button class="text-button" id="viewAllBtn" type="button">View all</button></div>
+          <ul class="activity-list">
+            <li><span class="activity-avatar lavender">AM</span><div><strong>Arjun updated UI kit</strong><p class="muted">Design system · 12 min ago</p></div><span class="activity-dot"></span></li>
+            <li><span class="activity-avatar mint">SR</span><div><strong>Sara completed a task</strong><p class="muted">Website redesign · 45 min ago</p></div><span class="activity-dot"></span></li>
+            <li><span class="activity-avatar peach">RK</span><div><strong>You created a project</strong><p class="muted">Portfolio website · 2 hours ago</p></div><span class="activity-dot"></span></li>
+            <li><span class="activity-avatar sky">JS</span><div><strong>Jay shared a report</strong><p class="muted">Weekly analytics · Yesterday</p></div><span class="activity-dot"></span></li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="panel glass-panel projects-panel" id="projects">
+        <div class="panel-header"><div><h2>Your projects</h2><p class="muted">Track progress across your workspace</p></div><span class="project-count" id="projectCount">3 projects</span></div>
+        <div class="project-list" id="projectList">
+          <article class="project-row" data-search="portfolio website web development"><span class="project-symbol purple">✦</span><div class="project-name"><strong>Portfolio website</strong><small>Web development</small></div><div class="project-progress"><div class="progress-track"><span style="width:82%"></span></div><small>82%</small></div><span class="status status-active">In progress</span><span class="due-date">Oct 30</span></article>
+          <article class="project-row" data-search="weather dashboard api javascript"><span class="project-symbol blue">☼</span><div class="project-name"><strong>Weather dashboard</strong><small>API integration</small></div><div class="project-progress"><div class="progress-track"><span style="width:56%"></span></div><small>56%</small></div><span class="status status-review">In review</span><span class="due-date">Nov 04</span></article>
+          <article class="project-row" data-search="learning tracker ui design"><span class="project-symbol orange">⌘</span><div class="project-name"><strong>Learning tracker</strong><small>UI design</small></div><div class="project-progress"><div class="progress-track"><span style="width:100%"></span></div><small>100%</small></div><span class="status status-done">Completed</span><span class="due-date">Oct 22</span></article>
+        </div>
+        <p class="empty-state" id="emptyState" hidden>No projects match your search.</p>
+      </section>
+      <footer class="footer"><span>© 2026 NovaBoard</span><span>Built with CSS design tokens · Mobile-first architecture</span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
